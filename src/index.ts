@@ -1,4 +1,5 @@
 import express from "express";
+import {PropertyService} from './services/property.service';
 const app = express();
 
 const port = process.env.PORT || 3000
@@ -8,7 +9,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/property-list",  (req, res) => {
-  res.send("My Property");
+  const propertyService = new PropertyService();
+  res
+    .status(200)
+    .send(propertyService.getProperties());
+});
+
+app.get("/property",  (req, res) => {
+  const propertyService = new PropertyService();
+  res
+    .status(200)
+    .send(propertyService.getProperty());
 });
  
 
