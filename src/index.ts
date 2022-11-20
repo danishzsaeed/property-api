@@ -5,14 +5,16 @@ import cors from "cors"
 const app = express();
 
 const port = process.env.PORT || 4000
+app.options('*', cors()) // include before other routes
 
-app.use(cors({ origin: "*", credentials: false }))
+app.use(cors())
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
 app.get("/property-list",  (req, res) => {
+  console.log('GET /property-list')
   const propertyService = new PropertyService();
   res
     .status(200)
@@ -20,6 +22,7 @@ app.get("/property-list",  (req, res) => {
 });
 
 app.get("/property",  (req, res) => {
+  console.log('property')
   const propertyService = new PropertyService();
   res
     .status(200)
