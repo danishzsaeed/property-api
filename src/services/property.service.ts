@@ -17,7 +17,7 @@ export class PropertyService {
         name: faker.random.word(),
         image: faker.image.business(),
         price: parseInt(faker.random.numeric(2)),
-        desc: faker.random.words()
+        desc: `${faker.hacker.phrase()}. ${faker.hacker.phrase()}.`
         }
         return property;
       }
